@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul id="car"></ul>
+  </body>
+</html>
+<script>
+  const listCar = [
+    {
+      name: 'mercedes',
+      price: '2000',
+    },
+    {
+      name: 'audi',
+      price: '3000',
+    },
+    {
+      name: 'rollroyce',
+      price: '10000',
+    },
+  ];
+  console.log(listCar);
+  let car = document.getElementById('car');
+  car.innerHTML = `${listCar.map((car) => `<li>${car.name}: ${car.price}</li>`)}`;
+
+  Array.prototype.map2 = function (callback) {
+    const length = this.length;
+    const result = [];
+    console.log(length);
+    for (let i = 0; i < length; i++) {
+      let temp = callback(this[i], i);
+      result.push(temp);
+    }
+    return result;
+  };
+  let newListCar = listCar.map2(function (value, index) {
+    return value;
+  });
+  let numberArr = [2, 3, 4, 5].map2((value, index) => value * 2);
+  console.log('numberArr', numberArr);
+  console.log('newListCar', newListCar);
+</script>
